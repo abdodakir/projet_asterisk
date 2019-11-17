@@ -1,3 +1,9 @@
+;!
+;! Automatically generated configuration file
+;! Filename: users.conf (/etc/asterisk/users.conf)
+;! Generator: Manager
+;! Creation Date: Wed Nov  6 09:15:20 2019
+;!
 ;
 ; User configuration
 ;
@@ -45,7 +51,35 @@ hasiax = yes
 ; Create manager entry
 ;
 hasmanager = no
-
+;
+; Set permissions for manager entry (see manager.conf.sample for documentation)
+; (defaults to *all* permissions)
+;managerread = system,call,log,verbose,command,agent,user,config
+;managerwrite = system,call,log,verbose,command,agent,user,config
+;
+;
+; MAC Address for res_phoneprov
+;
+;macaddress = 112233445566
+;
+; Auto provision the phone with res_phoneprov
+;
+;autoprov = yes
+;
+; Line Keys for hardphone
+;
+;LINEKEYS = 1
+;
+; Line number for hardphone
+;
+;linenumber = 1
+;
+; Local Caller ID number used with res_phoneprov and Asterisk GUI
+;
+;cid_number = 6000
+;
+; Remaining options are not specific to users.conf entries but are general.
+;
 callwaiting = yes
 threewaycalling = yes
 callwaitingcallerid = yes
@@ -85,14 +119,21 @@ vmexten = 123
 ;LINEKEYS = 1
 ;linenumber = 1
 ;cid_number = 6000
-
-[user-options](!)
-transfer = yes
-callcounter = yes
-context = DLPN_DialPlan1
+[6001]
+fullname = 6001
 registersip = no
 host = dynamic
-type = friend
+callgroup = 1
+mailbox = 6001
+call-limit = 100
+type = peer
+username = 6001
+transfer = yes
+
+
+callcounter = yes
+context = DLPN_DialPlan1
+cid_number = 6001
 hasvoicemail = no
 vmsecret = 
 email = 
@@ -102,67 +143,131 @@ callwaiting = no
 hasmanager = no
 hasagent = no
 hassip = yes
-hasiax = no
+hasiax = yes
+secret = 6001
 nat = yes
 canreinvite = no
 dtmfmode = rfc2833
 insecure = no
+pickupgroup = 1
 disallow = all
 allow = ulaw,gsm
-autoprov = yes
-
-[6001](user-options)
-fullname = 6001
-callgroup = 1
-mailbox = 6001
-call-limit = 100
-username = 6001
-cid_number = 6001
-secret = 6001
-pickupgroup = 1
 macaddress = 6001
+autoprov = yes
 label = 6001
 linenumber = 1
 LINEKEYS = 1
-
-[6000](user-options)
+[6000]
 fullname = 6000
+registersip = no
+host = dynamic
 callgroup = 1
 mailbox = 6000
 call-limit = 100
+type = peer
 username = 6000
+transfer = yes
+
+
+callcounter = yes
+context = DLPN_DialPlan1
 cid_number = 6000
+hasvoicemail = no
+vmsecret = 
+email = 
+threewaycalling = no
+hasdirectory = no
+callwaiting = no
+hasmanager = no
+hasagent = no
+hassip = yes
+hasiax = yes
 secret = 6000
+nat = yes
+canreinvite = no
+dtmfmode = rfc2833
+insecure = no
 pickupgroup = 1
+disallow = all
+allow = ulaw,gsm
 macaddress = 6000
+autoprov = yes
 label = 6000
 linenumber = 1
 LINEKEYS = 1
-
-[6002](user-options)
+[6002]
 fullname = 6002
+registersip = no
+host = dynamic
 callgroup = 1
 mailbox = 6002
 call-limit = 100
+type = peer
 username = 6002
+transfer = yes
+
+
+callcounter = yes
+context = DLPN_DialPlan1
 cid_number = 6002
+hasvoicemail = no
+vmsecret = 
+email = 
+threewaycalling = no
+hasdirectory = no
+callwaiting = no
+hasmanager = no
+hasagent = no
+hassip = yes
+hasiax = yes
 secret = 6002
+nat = yes
+canreinvite = no
+dtmfmode = rfc2833
+insecure = no
 pickupgroup = 1
+disallow = all
+allow = ulaw,gsm
 macaddress = 6002
+autoprov = yes
 label = 6002
 linenumber = 1
 LINEKEYS = 1
-
-[6003](user-options)
+[6003]
 fullname = 6003
+registersip = no
+host = dynamic
 callgroup = 1
 mailbox = 6003
 call-limit = 100
+type = peer
 username = 6003
+transfer = yes
+
+
+callcounter = yes
+context = DLPN_DialPlan1
 cid_number = 6003
+hasvoicemail = no
+vmsecret = 
+email = 
+threewaycalling = no
+hasdirectory = no
+callwaiting = no
+hasmanager = no
+hasagent = no
+hassip = yes
+hasiax = yes
 secret = 6003
+nat = yes
+canreinvite = no
+dtmfmode = rfc2833
+insecure = no
 pickupgroup = 1
+disallow = all
+allow = ulaw,gsm
 macaddress = 6003
+autoprov = yes
 label = 6003
 linenumber = 1
 LINEKEYS = 1
