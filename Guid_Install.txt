@@ -1,0 +1,82 @@
+>>>>>>>>>>>>>>>>>>>>>> Install & config Asterisk 16 <<<<<<<<<<<<<<<<<<<<
+
+===== 1 =====
+apt update && apt upgrade -y
+
+===== 2 =====
+cd /usr/src
+
+===== 3 =====
+wget https://downloads.asterisk.org/pub/telephony/asterisk/asterisk-16-current.tar.gz
+
+===== 4 =====
+apt install build-essential wget libssl-dev libncurses5-dev libnewt-dev libxml2-dev linux-headers-$(uname -r) libsqlite3-dev uuid-dev libjansson-dev git subversion -y
+
+===== 5 =====
+tar -xvf asterisk-16-current.tar.gz
+
+===== 6 =====
+cd /usr/src && cd asterisk-16.6.1 && contrib/scripts/get_mp3_source.sh && contrib/scripts/install_prereq install && ./configure --with-jansson-bundled && make menuselect && make && make install && make samples && make config && ldconfig
+
+
+===== 7 =====
+systemctl start asterisk
+
+===== 8 =====
+asterisk -rvvv
+
+===== 9 =====
+1) groupadd asterisk
+2) useradd -d /var/lib/asterisk -g asterisk asterisk
+
+===== 10 =====
+sed -i 's/#AST_USER="asterisk"/AST_USER="asterisk"/g' /etc/default/asterisk && sed -i 's/#AST_GROUP="asterisk"/AST_GROUP="asterisk"/g' /etc/default/asterisk
+
+===== 11 =====
+sed -i 's/;runuser = asterisk/runuser = asterisk/g' /etc/asterisk/asterisk.conf && sed -i 's/;rungroup = asterisk/rungroup = asterisk/g' /etc/asterisk/asterisk.conf
+
+===== 12 =====
+chown -R asterisk:asterisk /var/spool/asterisk /var/run/asterisk /etc/asterisk /var/{lib,log,spool}/asterisk /usr/lib/asterisk
+
+===== 13 =====
+systemctl start asterisk
+
+===== 14 =====
+asterisk -rvvv
+
+
+
+https://linuxhostsupport.com/blog/how-to-install-asterisk-on-ubuntu-16-04/
+
+https://wiki.asterisk.org/wiki/display/AST/Asterisk+GUI
+
+https://www.supinfo.com/articles/single/531-installer-serveur-voip-asterisk-ses-clients
+
+https://www.supinfo.com/articles/single/1911-asterisk-serveur-voip-gratuit-partie-1
+
+http://ipphonet.com/install-odbc-and-mysql-with-asterisk-pbx-part-2/
+
+https://wiki.asterisk.org/wiki/display/AST/Getting+Asterisk+Connected+to+MySQL+via+ODBC
+
+https://putokaz.wordpress.com/2018/02/12/how-to-install-the-mysql-odbc-driver-on-ubuntu-16-04-or-linux-mint-18-x/
+
+http://ipphonet.com/install-odbc-and-mysql-with-asterisk-pbx-1st/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
